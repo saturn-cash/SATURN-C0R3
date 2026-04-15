@@ -13,7 +13,7 @@ std::string ChainTypeToString(ChainType chain)
 {
     switch (chain) {
     case ChainType::MAIN:
-        return "main";
+        return "saturn";
     case ChainType::TESTNET:
         return "test";
     case ChainType::TESTNET4:
