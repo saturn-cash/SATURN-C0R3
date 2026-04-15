@@ -1,11 +1,11 @@
-// Copyright (c) 2024-present The Bitcoin Core developers
+// Copyright (c) 2024-present The Saturn Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITCOIN_KERNEL_BITCOINKERNEL_WRAPPER_H
 #define BITCOIN_KERNEL_BITCOINKERNEL_WRAPPER_H
 
-#include <kernel/bitcoinkernel.h>
+#include <kernel/saturnkernel.h>
 
 #include <array>
 #include <exception>

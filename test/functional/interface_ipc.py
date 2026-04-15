@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) The Bitcoin Core developers
+# Copyright (c) The Saturn Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the IPC (multiprocess) interface."""
 import asyncio
 
 from contextlib import ExitStack
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import SaturnTestFramework
 from test_framework.util import assert_equal
 from test_framework.ipc_util import (
     load_capnp_modules,
@@ -21,7 +21,7 @@ except ModuleNotFoundError:
     pass
 
 
-class IPCInterfaceTest(BitcoinTestFramework):
+class IPCInterfaceTest(SaturnTestFramework):
 
     def skip_test_if_missing_module(self):
         self.skip_if_no_ipc()
@@ -86,7 +86,7 @@ class IPCInterfaceTest(BitcoinTestFramework):
     def run_unclean_disconnect_test(self):
         """Test behavior when disconnecting during an IPC call that later
         returns a non-null interface pointer. This used to cause a crash as
-        reported https://github.com/bitcoin/bitcoin/issues/34250, but now just
+        reported https://github.com/saturn/saturn/issues/34250, but now just
         results in a cancellation log message"""
         node = self.nodes[0]
         self.log.info("Running disconnect during BlockTemplate.waitNext")
@@ -121,7 +121,7 @@ class IPCInterfaceTest(BitcoinTestFramework):
     def run_thread_busy_test(self):
         """Test behavior when sending multiple calls to the same server thread
         which used to cause a crash as reported
-        https://github.com/bitcoin/bitcoin/issues/33923."""
+        https://github.com/saturn/saturn/issues/33923."""
         node = self.nodes[0]
         self.log.info("Running thread busy test")
         timeout = self.rpc_timeout * 1000.0

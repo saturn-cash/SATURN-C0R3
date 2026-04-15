@@ -1,4 +1,4 @@
-// Copyright (c) 2024-present The Bitcoin Core developers
+// Copyright (c) 2024-present The Saturn Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -61,11 +61,11 @@ extern "C" {
  *
  * @section purpose Purpose
  *
- * This header currently exposes an API for interacting with parts of Bitcoin
+ * This header currently exposes an API for interacting with parts of Saturn
  * Core's consensus code. Users can validate blocks, iterate the block index,
  * read block and undo data from disk, and validate scripts. The header is
  * unversioned and not stable yet. Users should expect breaking changes. It is
- * also not yet included in releases of Bitcoin Core.
+ * also not yet included in releases of Saturn Core.
  *
  * @section context Context
  *
@@ -323,7 +323,7 @@ typedef uint8_t btck_Warning;
 /** Callback function types */
 
 /**
- * Function signature for the global logging callback. All bitcoin kernel
+ * Function signature for the global logging callback. All saturn kernel
  * internal logs will pass through this callback.
  */
 typedef void (*btck_LogCallback)(void* user_data, const char* message, size_t message_len);

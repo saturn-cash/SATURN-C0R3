@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (c) The Bitcoin Core developers
+# Copyright (c) The Saturn Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or https://opensource.org/license/mit/.
 
@@ -52,7 +52,7 @@ def download_from_url(url, archive):
 def download_script_assets(script_assets_dir):
     script_assets_dir.mkdir(parents=True, exist_ok=True)
     script_assets = script_assets_dir / "script_assets_test.json"
-    url = "https://github.com/bitcoin-core/qa-assets/raw/main/unit_test_data/script_assets_test.json"
+    url = "https://github.com/saturn-core/qa-assets/raw/main/unit_test_data/script_assets_test.json"
     try:
         download_from_url(url, script_assets)
     except Exception as e:

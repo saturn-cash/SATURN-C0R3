@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-present The Bitcoin Core developers
+# Copyright (c) 2020-present The Saturn Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """
 Test that -discover does not add all interfaces' addresses if we listen on only some of them
 """
 
-from test_framework.test_framework import BitcoinTestFramework, SkipTest
+from test_framework.test_framework import SaturnTestFramework, SkipTest
 from test_framework.util import (
     assert_equal,
     assert_not_equal,
@@ -33,7 +33,7 @@ from test_framework.util import (
 ADDR1 = '1.1.1.1'
 ADDR2 = '2.2.2.2'
 
-class BindPortDiscoverTest(BitcoinTestFramework):
+class BindPortDiscoverTest(SaturnTestFramework):
     def set_test_params(self):
         # Avoid any -bind= on the command line. Force the framework to avoid adding -bind=127.0.0.1.
         self.bind_to_localhost_only = False

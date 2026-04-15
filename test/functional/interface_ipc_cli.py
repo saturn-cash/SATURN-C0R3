@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) 2025 The Bitcoin Core developers
+# Copyright (c) 2025 The Saturn Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test IPC with bitcoin-cli"""
+"""Test IPC with saturn-cli"""
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import SaturnTestFramework
 from test_framework.util import (
     assert_equal,
     rpc_port
@@ -12,7 +12,7 @@ from test_framework.util import (
 
 import subprocess
 
-class TestBitcoinIpcCli(BitcoinTestFramework):
+class TestSaturnIpcCli(SaturnTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1
@@ -26,7 +26,7 @@ class TestBitcoinIpcCli(BitcoinTestFramework):
 
     def test_cli(self, args, error=None):
         # Intentionally set wrong RPC password so only IPC not HTTP connections work
-        args = [self.binary_paths.bitcoincli, f"-datadir={self.nodes[0].datadir_path}", "-rpcpassword=wrong"] + args + ["echo", "foo"]
+        args = [self.binary_paths.saturncli, f"-datadir={self.nodes[0].datadir_path}", "-rpcpassword=wrong"] + args + ["echo", "foo"]
         result = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         if error is None:
             assert_equal(result.stdout, '[\n  "foo"\n]\n')
@@ -41,8 +41,8 @@ class TestBitcoinIpcCli(BitcoinTestFramework):
             self.log.info("Skipping a few checks because temporary directory path is too long")
 
         http_auth_error = "error: Authorization failed: Incorrect rpcuser or rpcpassword were specified."
-        http_connect_error = f"error: timeout on transient error: Could not connect to the server 127.0.0.1:{rpc_port(node.index)}\n\nMake sure the bitcoind server is running and that you are connecting to the correct RPC port.\nUse \"bitcoin-cli -help\" for more info.\n"
-        ipc_connect_error = "error: timeout on transient error: Connection refused\n\nProbably bitcoin-node is not running or not listening on a unix socket. Can be started with:\n\n    bitcoin-node -chain=regtest -ipcbind=unix\n"
+        http_connect_error = f"error: timeout on transient error: Could not connect to the server 127.0.0.1:{rpc_port(node.index)}\n\nMake sure the saturnd server is running and that you are connecting to the correct RPC port.\nUse \"saturn-cli -help\" for more info.\n"
+        ipc_connect_error = "error: timeout on transient error: Connection refused\n\nProbably saturn-node is not running or not listening on a unix socket. Can be started with:\n\n    saturn-node -chain=regtest -ipcbind=unix\n"
         ipc_http_conflict = "error: -rpcconnect and -ipcconnect options cannot both be enabled\n"
 
         for started in (True, False):
@@ -65,4 +65,4 @@ class TestBitcoinIpcCli(BitcoinTestFramework):
 
 
 if __name__ == '__main__':
-    TestBitcoinIpcCli(__file__).main()
+    TestSaturnIpcCli(__file__).main()

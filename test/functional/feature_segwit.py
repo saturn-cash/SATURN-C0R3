@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016-present The Bitcoin Core developers
+# Copyright (c) 2016-present The Saturn Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the SegWit changeover logic."""
@@ -31,7 +31,7 @@ from test_framework.script import (
 from test_framework.script_util import (
     keys_to_multisig_script,
 )
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import SaturnTestFramework
 from test_framework.util import (
     assert_equal,
     assert_greater_than_or_equal,
@@ -63,7 +63,7 @@ def find_spendable_utxo(node, min_value):
     raise AssertionError(f"Unspent output equal or higher than {min_value} not found")
 
 
-class SegWitTest(BitcoinTestFramework):
+class SegWitTest(SaturnTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3

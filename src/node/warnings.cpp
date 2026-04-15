@@ -1,9 +1,9 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The Saturn Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <bitcoin-build-config.h> // IWYU pragma: keep
+#include <saturn-build-config.h> // IWYU pragma: keep
 
 #include <node/warnings.h>
 
@@ -23,7 +23,7 @@ Warnings::Warnings()
     if (!CLIENT_VERSION_IS_RELEASE) {
         m_warnings.insert(
             {Warning::PRE_RELEASE_TEST_BUILD,
-             _("This is a pre-release test build - use at your own risk - do not use for mining or merchant applications")});
+             _("GAS")});
     }
 }
 bool Warnings::Set(warning_type id, bilingual_str message)

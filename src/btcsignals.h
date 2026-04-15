@@ -1,9 +1,9 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The Saturn Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_BTCSIGNALS_H
-#define BITCOIN_BTCSIGNALS_H
+#ifndef BITCOIN_SATSIGNALS_H
+#define BITCOIN_SATSIGNALS_H
 
 #include <sync.h>
 
@@ -254,4 +254,4 @@ public:
 
 } // namespace btcsignals
 
-#endif // BITCOIN_BTCSIGNALS_H
+#endif // BITCOIN_SATSIGNALS_H
