@@ -2,19 +2,31 @@
 
 ## Supported Versions
 
-See our website for versions of Saturn Core that are currently supported with
-security updates: https://saturncore.org/en/lifecycle/#schedule
+Only the latest Saturn Core release is currently supported with security updates.
+
+Official Saturn Mainnet Genesis:
+
+00006a5039b3c988c24228f9b84f38bbce3f8085543d79685fe12007677a7d21
+
+Older releases and pre-relaunch chain histories are deprecated and may not be compatible with the current Saturn network.
 
 ## Reporting a Vulnerability
 
-To report security issues send an email to security@saturncore.org (not for support).
+If you discover a security vulnerability in Saturn Core, please report it privately to the Saturn Core developers before publicly disclosing the issue.
 
-The following keys may be used to communicate sensitive information to developers:
+Contact:
+security@saturn.boats
 
-| Name | Fingerprint |
-|------|-------------|
-| Pieter Wuille | 133E AC17 9436 F14A 5CF1  B794 860F EB80 4E66 9320 |
-| Michael Ford | E777 299F C265 DD04 7930  70EB 944D 35F9 AC3D B76A |
-| Ava Chow | 1528 1230 0785 C964 44D3  334D 1756 5732 E08E 5E41 |
+Please include:
+- Saturn Core version
+- Operating system
+- Steps to reproduce the issue
+- Any relevant logs or screenshots
 
-You can import a key by running the following command with that individual’s fingerprint: `gpg --keyserver hkps://keys.openpgp.org --recv-keys "<fingerprint>"` Ensure that you put quotes around fingerprints containing spaces.
+We will acknowledge reports as quickly as possible and coordinate responsible disclosure when appropriate.
+
+## Credits
+
+Saturn Core is an independent open-source project maintained by the Saturn Core developers.
+
+Built upon the pioneering work of Satoshi Nakamoto and the Bitcoin Core contributors.
