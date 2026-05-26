@@ -1,3 +1,7 @@
+// Saturn Core
+// Copyright (c) 2026-present Tremoto
+// Based on Bitcoin Core by Satoshi Nakamoto and contributors
+
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-present The Saturn Core developers
 // Distributed under the MIT software license, see the accompanying
@@ -18,6 +22,7 @@
 #include <script/script.h>
 #include <uint256.h>
 #include <util/chaintype.h>
+#include <iostream>
 #include <util/log.h>
 #include <util/strencodings.h>
 
@@ -67,7 +72,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
+    const char* pszTimestamp = "Saturn Cash genesis 2026 - A new orbit begins";
     const CScript genesisOutputScript = CScript() << "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f"_hex << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -93,7 +98,7 @@ public:
         consensus.CSVHeight = 419328; // 000000000000000004a1b34462cb8aeebd5799177f7a29cf28f2d1961716b5b5
         consensus.SegwitHeight = 481824; // 0000000000000000001c8018d9cb3b742ef25114f27563e3fc4a1902167f9893
         consensus.MinBIP9WarningHeight = 711648; // taproot activation height + miner confirmation window
-        consensus.powLimit = uint256{"00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"};
+        consensus.powLimit = uint256{"0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"};
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -123,10 +128,10 @@ public:
         m_assumed_blockchain_size = 856;
         m_assumed_chain_state_size = 14;
 
-        genesis = CreateGenesisBlock(1231006505, 2083236893, 0x1d00ffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1779650000, 59259, 0x1f00ffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256{"00000000f9d817df9fcc367f053312da55cace30b231dc3cce0c5c1b77ffefc1"});
-        //assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
+                assert(consensus.hashGenesisBlock == uint256{"00006a5039b3c988c24228f9b84f38bbce3f8085543d79685fe12007677a7d21"});
+        assert(genesis.hashMerkleRoot == uint256{"c1816ee7da493c4621b77ab32a3dcccfefc48ebf6186649ad9901cd5b34ff0c9"});
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
@@ -237,7 +242,7 @@ public:
         genesis = CreateGenesisBlock(1296688602, 414098458, 0x1d00ffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         //assert(consensus.hashGenesisBlock == uint256{"000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943"});
-        //assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
+        //assert(genesis.hashMerkleRoot == uint256{"c1816ee7da493c4621b77ab32a3dcccfefc48ebf6186649ad9901cd5b34ff0c9"});
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -477,7 +482,7 @@ public:
         genesis = CreateGenesisBlock(1598918400, 52613770, 0x1e0377ae, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         //assert(consensus.hashGenesisBlock == uint256{"00000008819873e925422c1ff0f99f7cc9bbb232af63a077a480a3633bee1ef6"});
-        //assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
+        //assert(genesis.hashMerkleRoot == uint256{"c1816ee7da493c4621b77ab32a3dcccfefc48ebf6186649ad9901cd5b34ff0c9"});
 
         m_assumeutxo_data = {
             {
@@ -588,7 +593,7 @@ public:
         genesis = CreateGenesisBlock(1296688602, 2, 0x207fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         //assert(consensus.hashGenesisBlock == uint256{"0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206"});
-        //assert(genesis.hashMerkleRoot == uint256{"4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"});
+        //assert(genesis.hashMerkleRoot == uint256{"c1816ee7da493c4621b77ab32a3dcccfefc48ebf6186649ad9901cd5b34ff0c9"});
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();

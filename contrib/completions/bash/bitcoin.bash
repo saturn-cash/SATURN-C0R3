@@ -1,10 +1,10 @@
-# bash programmable completion for bitcoin(1) wrapper
-# Copyright (c) 2026-present The Bitcoin Core developers
+# bash programmable completion for saturn(1) wrapper
+# Copyright (c) 2026-present The Saturn Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 # wrapper to delegate completion to the real function
-_bitcoin_wrap() {
+_saturn_wrap() {
     local delegate="$1" shift_count="$2"
     local func="_${delegate//-/_}"
     local words cword dir file
@@ -26,13 +26,13 @@ _bitcoin_wrap() {
     $func "$delegate"
 }
 
-_bitcoin() {
+_saturn() {
     local cur prev words cword
-    local bitcoin subcmd offset
+    local saturn subcmd offset
 
-    # save and use original argument to invoke bitcoin for help
+    # save and use original argument to invoke saturn for help
     # it might not be in $PATH
-    bitcoin="$1"
+    saturn="$1"
 
     COMPREPLY=()
     _get_comp_words_by_ref -n = cur prev words cword
@@ -50,15 +50,15 @@ _bitcoin() {
 
     case "$subcmd" in
         gui|node)
-            _bitcoin_wrap bitcoind "$offset"
+            _saturn_wrap saturnd "$offset"
             return 0
             ;;
         rpc)
-            _bitcoin_wrap bitcoin-cli "$offset"
+            _saturn_wrap saturn-cli "$offset"
             return 0
             ;;
         tx)
-            _bitcoin_wrap bitcoin-tx "$offset"
+            _saturn_wrap saturn-tx "$offset"
             return 0
             ;;
     esac
@@ -72,10 +72,10 @@ _bitcoin() {
 
             # only parse help if sensible
             if [[ -z "$cur" || "$cur" =~ ^- ]]; then
-                options=$($bitcoin help 2>&1 | awk '{ for(i=1;i<=NF;i++) if ($i~/^--/) { sub(/=.*/, "=",$i); print $i } }' )
+                options=$($saturn help 2>&1 | awk '{ for(i=1;i<=NF;i++) if ($i~/^--/) { sub(/=.*/, "=",$i); print $i } }' )
             fi
             if [[ -z "$cur" || "$cur" =~ ^[a-z] ]]; then
-                commands=$($bitcoin help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
+                commands=$($saturn help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
             fi
 
             COMPREPLY=( $( compgen -W "$options $commands" -- "$cur" ) )
@@ -89,7 +89,7 @@ _bitcoin() {
     esac
 
 } &&
-complete -F _bitcoin bitcoin
+complete -F _saturn saturn
 
 # Local variables:
 # mode: shell-script
